@@ -15,9 +15,22 @@ public class Vent extends JFrame {
         menuNavegacion.addTab("Login", crearPanelLogin());
         menuNavegacion.addTab("Registro", crearPanelRegistro());
         menuNavegacion.addTab("Tabla de Usuarios", crearPanelTabla());
+        menuNavegacion.addTab("ola", crearPanelPrueba());
 
         this.add(menuNavegacion);
         this.setVisible(true);
+    }
+ 
+    private JPanel crearPanelPrueba() {
+        JPanel pnl = new JPanel(null);
+        
+       
+        ImageIcon image = new ImageIcon("/home/francisco/Documentos/tareas/Actividad1/src/App.java");
+        JLabel lblImagen = new JLabel(image);
+        lblImagen.setBounds(100, 100, 3000,3000); 
+        pnl.add(lblImagen);
+        
+        return pnl;
     }
 
     private JPanel crearPanelLogin() {
@@ -116,6 +129,7 @@ public class Vent extends JFrame {
         return pnl;
     }
 
+  
     public static void main(String[] args) {
         new Vent();
     }
