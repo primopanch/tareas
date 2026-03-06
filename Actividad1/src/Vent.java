@@ -12,6 +12,7 @@ public class Vent extends JFrame {
     private final Color ACCENT_BLUE = new Color(0, 122, 255);
     private final Color TEXT_WHITE = Color.WHITE;
 
+
     public Vent() {
         configurarAparienciaGlobal();
         
@@ -28,6 +29,7 @@ public class Vent extends JFrame {
         menuNavegacion.addTab("Login", crearPanelLogin());
         menuNavegacion.addTab("Registro", crearPanelRegistro());
         menuNavegacion.addTab("Tabla de Usuarios", crearPanelTabla());
+        menuNavegacion.addTab("Calculadora", crearPanelCalculadora());
 
         this.add(menuNavegacion);
         this.setVisible(true);
@@ -153,6 +155,37 @@ public class Vent extends JFrame {
         JScrollPane scroll = new JScrollPane(tabla);
         scroll.getViewport().setBackground(BG_DARK);
         pnl.add(scroll, BorderLayout.CENTER);
+
+        return pnl;
+    }
+
+    private JPanel crearPanelCalculadora() {
+        JPanel pnl = new JPanel(new BorderLayout());
+        pnl.setBackground(BG_DARK);
+        pnl.setBorder(new EmptyBorder(30, 30, 30, 30));
+
+        JTextField display = new JTextField("0");
+        display.setEditable(false);
+        display.setHorizontalAlignment(JTextField.RIGHT);
+        display.setFont(new Font("SansSerif", Font.BOLD, 24));
+        display.setBackground(BG_CARD);
+        display.setForeground(TEXT_WHITE);
+        pnl.add(display, BorderLayout.NORTH);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(5, 4, 5, 5));
+        buttonPanel.setBackground(BG_DARK);
+
+        String[] buttons = {"7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+"};
+
+        for (String text : buttons) {
+            JButton btn = new JButton(text);
+            btn.setBackground(BG_CARD);
+            btn.setForeground(TEXT_WHITE);
+            btn.setFont(new Font("SansSerif", Font.BOLD, 18));
+            buttonPanel.add(btn);
+        }
+
+        pnl.add(buttonPanel, BorderLayout.CENTER);
 
         return pnl;
     }
