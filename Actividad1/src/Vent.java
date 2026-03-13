@@ -1,8 +1,11 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
+import javax.swing.table.JTableHeader;           
 
 public class Vent extends JFrame {
 
@@ -30,6 +33,8 @@ public class Vent extends JFrame {
         menuNavegacion.addTab("Registro", crearPanelRegistro());
         menuNavegacion.addTab("Tabla de Usuarios", crearPanelTabla());
         menuNavegacion.addTab("Calculadora", crearPanelCalculadora());
+        menuNavegacion.addTab("dibujo ", pintar());
+        
 
         this.add(menuNavegacion);
         this.setVisible(true);
@@ -198,6 +203,56 @@ public class Vent extends JFrame {
         return lbl;
     }
 
+  private JPanel pintar() { 
+    JPanel pane = new JPanel() {
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            
+            
+            Graphics2D g2d = (Graphics2D) g;
+
+            g2d.setStroke(new BasicStroke(5f));
+            g2d.setColor(ACCENT_BLUE);
+            g2d.drawLine(0, 0, 250, 250);
+
+            g2d.drawOval(10, 100, 150, 50);
+            
+            g2d.setStroke(new BasicStroke(3));
+            g2d.drawPolygon(new int[]{300, 100, 500},new int[] {100, 300, 300}, 3);
+            
+            g2d.setStroke(new BasicStroke(3));
+
+            g2d.drawRoundRect(500, 150, 100,100, 10,10);
+
+            g2d.drawArc(400, 100, 100, 100, 0, 90);
+
+            g2d.setFont(new Font("Arial", Font.BOLD, 22));
+            g2d.drawString("Hola", 100, 100);
+
+            g2d.fillOval(10, 100, 150, 50);
+            g2d.fillRect(500,150,100,100);
+
+            g2d.setColor(Color.blue);
+            g2d.fillRoundRect(500,500,100,100,10,10);
+           
+            g2d.fillArc(450, 50, 150, 150, 0, 90);
+
+            BufferedImage image;
+            try {
+                image = ImageIO.read(new File("/home/francisco/Documentos/tareas/Actividad1/src/nigabart.jpg"));
+                g2d.drawImage(image, 0, 0, null);
+            } catch (Exception e) {
+
+            }
+           
+           }
+    };
+    
+    pane.setBackground(BG_DARK);
+    return pane; 
+}
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Vent::new);
     }
