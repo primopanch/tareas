@@ -241,7 +241,7 @@ public class Vent extends JFrame {
             BufferedImage image;
             try {
                 image = ImageIO.read(new File("/home/francisco/Documentos/tareas/Actividad1/src/nigabart.jpg"));
-                g2d.drawImage(image, 0, 0, null);
+                g2d.drawImage(image, 0, 150, 100, 100, null);
             } catch (Exception e) {
 
             }
